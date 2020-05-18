@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="components/loader.js"></script>
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/cssua.min.js"></script>
+  <script>
+    function calculate() {
+        let sign = ["みずがめ座","うお座","おひつじ座","おうし座",
+                    "ふたご座","かに座","しし座","おとめ座",
+                    "てんびん座","さそり座","いて座","やぎ座"];
+        var month = Number($("#myname").val());
+        var day = Number($("#myval").val());
+        var text = "";
+
+        switch(month) {
+          case 3:
+            text = day > 21 ? sign[3]:sign[2];
+            break;
+          case 4:
+            text = day > 20 ? sign[4]:sign[3];
+            break;
+          case 5:
+            text = day > 21 ? sign[5]:sign[4];
+            break;
+          case 6:
+            text = day > 22 ? sign[6]:sign[5];
+            break;
+          case 7:
+            text = day > 23 ? sign[7]:sign[6];
+            break;
+          case 8:
+            text = day > 23 ? sign[8]:sign[7];
+            break;
+          case 9:
+            text = day > 23 ? sign[9]:sign[8];
+            break;
+          case 10:
+            text = day > 24 ? sign[10]:sign[9];
+            break;
+          case 11:
+            text = day > 23 ? sign[11]:sign[10];
+            break;
+          case 12:
+            text = day > 22 ? sign[12]:sign[11];
+            break;
+          case 1:
+            text = day > 20 ? sign[1]:sign[12];
+            break;
+          case 2:
+            text = day > 19 ? sign2[2]:sign[1];
+            break;
+          default:
+            break;
+        }
+        navigator.notification.alert(text, null, "あなたの星座は");
+    }
+  </script>
+</head>
+<body>
+  <div data-role="page" id="TopPage"> 
+    <header data-role="header" data-position="fixed" data-theme="c">
+      <h1>BirthYear App</h1>
+    </header>
+      <section data-role="content">
+
+        月
+        <input type="text" id="myname" class="input-text">
+        
+        日
+        <input type="text" id="myage" class="input-text">
+
+        <a class="button" onclick="calculate();">判定!</a>
+    </section>
+  </div> 
+</body>
+</html>
