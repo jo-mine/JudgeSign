@@ -10,54 +10,55 @@
   <script src="js/cssua.min.js"></script>
   <script>
     function calculate() {
-        let sign = ["みずがめ座","うお座","おひつじ座","おうし座",
-                    "ふたご座","かに座","しし座","おとめ座",
-                    "てんびん座","さそり座","いて座","やぎ座"];
-        var month = Number($("#myname").val());
-        var day = Number($("#myval").val());
-        var text = "";
+        let sign = ['みずがめ座','うお座','おひつじ座','おうし座',
+                    'ふたご座','かに座','しし座','おとめ座',
+                    'てんびん座','さそり座','いて座','やぎ座'];
+        var month = Number($("#mymonth").val());
+        var day = Number($("#myday").val());
+        var text = '';
 
         switch(month) {
           case 3:
-            text = day > 21 ? sign[3]:sign[2];
+            text = day >= 21 ? sign[2]:sign[1];
             break;
           case 4:
-            text = day > 20 ? sign[4]:sign[3];
+            text = day >= 20 ? sign[3]:sign[2];
             break;
           case 5:
-            text = day > 21 ? sign[5]:sign[4];
+            text = day >= 21 ? sign[4]:sign[3];
             break;
           case 6:
-            text = day > 22 ? sign[6]:sign[5];
+            text = day >= 22 ? sign[5]:sign[4];
             break;
           case 7:
-            text = day > 23 ? sign[7]:sign[6];
+            text = day >= 23 ? sign[6]:sign[5];
             break;
           case 8:
-            text = day > 23 ? sign[8]:sign[7];
+            text = day >= 23 ? sign[7]:sign[6];
             break;
           case 9:
-            text = day > 23 ? sign[9]:sign[8];
+            text = day >= 23 ? sign[8]:sign[7];
             break;
           case 10:
-            text = day > 24 ? sign[10]:sign[9];
+            text = day >= 24 ? sign[9]:sign[8];
             break;
           case 11:
-            text = day > 23 ? sign[11]:sign[10];
+            text = day >= 23 ? sign[10]:sign[9];
             break;
           case 12:
-            text = day > 22 ? sign[12]:sign[11];
+            text = day >= 22 ? sign[11]:sign[10];
             break;
           case 1:
-            text = day > 20 ? sign[1]:sign[12];
+            text = day >= 20 ? sign[0]:sign[11];
             break;
           case 2:
-            text = day > 19 ? sign2[2]:sign[1];
+            text = day >= 19 ? sign[1]:sign[0];
             break;
           default:
             break;
         }
-        navigator.notification.alert(text, null, "あなたの星座は");
+        //alert(text);
+        $("#result").text(`あなたの星座は${text}です`); 
     }
   </script>
 </head>
@@ -69,12 +70,16 @@
       <section data-role="content">
 
         月
-        <input type="text" id="myname" class="input-text">
+        <input type="text" id="mymonth" class="input-text" placeholder='月を入力'>
         
         日
-        <input type="text" id="myage" class="input-text">
+        <input type="text" id="myday" class="input-text" placeholder='日付を入力'>
 
-        <a class="button" onclick="calculate();">判定!</a>
+        <div style="text-align: center;">
+          <a class="button" onclick="calculate();">判定!</a>
+        </div>
+
+        <div id="result"></div>
     </section>
   </div> 
 </body>
